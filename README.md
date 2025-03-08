@@ -5,7 +5,7 @@ COMO O PROGRAMA FUNCIONA:
    
 - É criada uma pasta nomeada de "Summary".
   
--Em seguida, o programa irá criar um arquivo nomeado de "Summary.csv" na pasta "Summary", contendo o nome e o valor total dos Produtos da seguinte forma: nome,valortotal(preço * quantidade).
+- Em seguida, o programa irá criar um arquivo nomeado de "Summary.csv" na pasta "Summary", contendo o nome e o valor total dos Produtos da seguinte forma: nome,valortotal(preço * quantidade).
 1. Neste trecho, o programa abordará uma lógica onde caso não exista nenhum arquivo nomeado de "Summary.csv" na pasta "Summary", ele será criado. Caso exista um arquivo nomeado de "Summary.csv", o programa irá criar um novo arquivo nomeado de "Summary(quantidade de arquivo Summary*.csv na pasta).csv".
 
    
