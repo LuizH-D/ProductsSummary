@@ -1,0 +1,10 @@
+# Ignora arquivos de leitura e a pasta criada pelo programa.
+
+# Arquivo
+*.txt
+
+# Pasta
+*Summary/
+
+# Pasta gerada pelo Visual Studio
+*.vs/
