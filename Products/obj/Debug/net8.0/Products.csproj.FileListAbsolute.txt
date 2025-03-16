@@ -40,3 +40,4 @@ C:\Users\luizh\Documents\Projetos\ProductsSummary\Products\obj\Debug\net8.0\refi
 C:\Users\luizh\Documents\Projetos\ProductsSummary\Products\obj\Debug\net8.0\Products.pdb
 C:\Users\luizh\Documents\Projetos\ProductsSummary\Products\obj\Debug\net8.0\Products.genruntimeconfig.cache
 C:\Users\luizh\Documents\Projetos\ProductsSummary\Products\obj\Debug\net8.0\ref\Products.dll
+C:\Users\luizh\Documents\Projetos\ProductsSummary\Products\obj\Debug\net8.0\Products.sourcelink.json

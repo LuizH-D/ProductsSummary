@@ -1,49 +1,37 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Globalization;
 using ProductsSummary.Entities;
 
 namespace ProductsSummary {
     class Program {
         static void Main(string[] args) {
-
-            List<Product> products = new List<Product>();
-
             try {
                 Console.WriteLine("ENTER YOUR SOURCE FILE PATH (YOUR FILE MUST BE NAMED AS 'Products.txt'):");
-                string sourceFile = Console.ReadLine();
-                string targetDirectory = sourceFile.Substring(0, sourceFile.Length - 13);
-
-                using (StreamReader sr = File.OpenText(sourceFile)) {
-                    while (!sr.EndOfStream) {
-                        string[] lines = sr.ReadLine().Split(",");
-                        string productName = lines[0];
-                        double productPrice = double.Parse(lines[1], CultureInfo.InvariantCulture);
-                        int productQuantity = int.Parse(lines[2]);
-                        products.Add(new Product(productName, productPrice, productQuantity));
-                    }
-                }
+                string path = Console.ReadLine();
+                SourceFile sourceFile = new SourceFile(path);
+                string targetDirectory = sourceFile.Path.Substring(0, sourceFile.Path.Length - 13);
 
                 Directory.CreateDirectory(targetDirectory + @"\Summary");
                 targetDirectory += @"\Summary";
                
                 if (File.Exists(targetDirectory + @"\Summary.csv")) {
                     using (StreamWriter sw = File.CreateText(targetDirectory + $@"\Summary({Directory.GetFiles(targetDirectory, "Summary*.csv", SearchOption.TopDirectoryOnly).Length}).csv")) {
-                        foreach (Product product in products) {
-                            sw.WriteLine($"{product.Name}, {product.TotalValue().ToString("F2", CultureInfo.InvariantCulture)}");
+                        foreach (Product product in sourceFile.FileReader(sourceFile.Path)) {
+                            sw.WriteLine($"{product.Name},{product.TotalValue().ToString("F2", CultureInfo.InvariantCulture)}");
                         }
                     }
                 }
                 else {
                     using (StreamWriter sw = File.CreateText(targetDirectory + @"\Summary.csv")) {
 
-                        foreach (Product product in products) {
-                            sw.WriteLine($"{product.Name}, {product.TotalValue().ToString("F2", CultureInfo.InvariantCulture)}");
+                        foreach (Product product in sourceFile.FileReader(sourceFile.Path)) {
+                            sw.WriteLine($"{product.Name},{product.TotalValue().ToString("F2", CultureInfo.InvariantCulture)}");
                         }
                     }
                 }
 
+                Console.WriteLine();
                 Console.WriteLine("Summary created!");
             }
 
